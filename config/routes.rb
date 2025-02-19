@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "books#index"
 
-  resources :books, only:  [:index, :show]
-  resources :borrowings, only: [:index], as: :user_profile
+  resources :books, only:  [ :index, :show ]
+  resources :borrowings, only: [ :index ]
 
+  put "books/:id/borrow", to: "books#borrow_book", as: "borrow"
+  delete "books/:id/return", to: "books#return_book", as: "return"
 end
