@@ -1,24 +1,100 @@
-# README
+# Book Lending Library Application (Rails 8)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup Instructions
 
-Things you may want to cover:
+1. **Clone the repository:**
+   ```bash
+   git clone git@github.com:osur-gaetano/book_lending_library_application.git
+   cd book_lending_library
+   ```
 
-* Ruby version
+2. **Set up the application:**
+   ```bash
+   bundle install
+   bin/rails db:create db:migrate db:seed
+   bin/rails db:fixtures:load
+   ```
 
-* System dependencies
+3. **Run the server:**
+   ```bash
+   bin/rails server
+   ```
 
-* Configuration
+4. **Access the application:**
+   Open your browser and go to `http://localhost:3000`
 
-* Database creation
+   default log in account credentials:
+   ```bash
+   email_address: one@example.com
+   password: password
 
-* Database initialization
+   email_address: two@example.com
+   password: password
+   ```
+5. **Run tests:**
+   ```bash
+   bin/rails test
+   ```
 
-* How to run the test suite
+## Application Structure
 
-* Services (job queues, cache servers, search engines, etc.)
+### Models
 
-* Deployment instructions
+1. **User**
+   - Fields: `email`, `encrypted_password`
+   - Authentication: Default Rails 8 authentication
 
-* ...
+2. **Book**
+   - Fields: `title`, `author`, `isbn`, `status`
+   - Validations:
+     - Presence of title, author, and ISBN
+     - Unique ISBN
+
+3. **Borrowing**
+   - Fields: `user_id`, `book_id`, `borrowed_date`, `due_date`, `returned_date`
+   - Validations:
+     - Ensure a book can be borrowed only if not already borrowed
+     - Presence of user_id and book_id
+
+### Features
+
+1. **User Authentication**
+   - Registration, login, logout (using Rails 8 default auth)
+
+2. **Book Management**
+   - Browse available books (showing availability status)
+   - View book details (with a borrow button if available)
+
+3. **Borrowing System**
+   - Borrow a book (if available) and create a Borrowing record
+   - Automatically set a due date (2 weeks from borrowing date)
+   - Return a book and mark it as returned
+   - View borrowed books in the user profile
+
+
+
+## Seed Data
+
+Add sample books to the database:
+
+```
+bin/rails db:seed
+
+
+```
+
+Run the seed command:
+
+```bash
+bin/rails db:seed
+```
+
+## Future Improvements
+
+1. Add admin functionality for managing books.
+2. Implement notifications for upcoming due dates.
+3. Enhance user experience with improved UI and UX.
+
+## License
+
+MIT License
