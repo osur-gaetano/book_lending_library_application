@@ -1,0 +1,19 @@
+<div>
+  <h1 class="font-bold text-4xl">My Borrowed Books</h1>
+  <br>
+  <% if @borrowed_books.empty? %>
+    <p> You have not yet borrowed any book from the library.</br>
+        Proceed to <%= link_to "Library", books_path%> to browse for books.
+    </p>
+  <% else %>
+    <% @borrowed_books.each do |book| %>
+      <div>
+        <%= link_to book.title, book%>
+      </div>
+    <%end%>
+  <%end%>
+  <br>
+  <p>
+    <%= button_to "Library", books_path, method: :get %>
+  </p>
+</div>
