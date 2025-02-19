@@ -1,4 +1,20 @@
 <div>
-  <h1 class="font-bold text-4xl">Books#show</h1>
-  <p>Find me in app/views/books/show.html.erb</p>
+  <h1 class="font-bold text-4xl"><%= @book.title %></h1>
+
+  <div>
+    <p>Author: <%= @book.author%></p>
+  </div>
+
+  <div>
+    <p>ISBN: <%= @book.isbn%></p>
+  </div>
+
+
+  <div>
+    <p>Availability: <%= @book.status%></p>
+  </div>
+
+  <%= link_to "Back to book listings", books_path %>
+
+
 </div>
