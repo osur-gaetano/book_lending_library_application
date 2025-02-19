@@ -72,23 +72,6 @@
    - View borrowed books in the user profile
 
 
-
-## Seed Data
-
-Add sample books to the database:
-
-```
-bin/rails db:seed
-
-
-```
-
-Run the seed command:
-
-```bash
-bin/rails db:seed
-```
-
 ## Future Improvements
 
 1. Add admin functionality for managing books.
