@@ -1,19 +1,25 @@
 <div>
-  <h1 class="font-bold text-4xl">My Borrowed Books</h1>
+  <h1 class="font-bold text-4xl text-gray-100 ">My Borrowed Books</h1>
   <br>
   <% if @borrowed_books.empty? %>
-    <p> You have not yet borrowed any book from the library.</br>
-        Proceed to <%= link_to "Library", books_path%> to browse for books.
+    <p class="text-gray-100"> You have not yet borrowed any book from the library.</br>
+        Proceed to <%= link_to "Library", books_path, class: "font-bold text-orange-700"%> to browse for books.
     </p>
   <% else %>
     <% @borrowed_books.each do |book| %>
-      <div>
-        <%= link_to book.title, book%>
+      <div class="flex item-center justify-between">
+        <div class= "font-bold text-gray-100">
+          <%= link_to book.title, book%>
+        </div>
+        <div>
+          <%= button_to 'Return_book', return_path(book), method: :delete, class: "btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded"%>
+        </div>
       </div>
+      <br>
     <%end%>
   <%end%>
   <br>
   <p>
-    <%= button_to "Library", books_path, method: :get %>
+    <%= button_to "Library", books_path, method: :get, class: "btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" %>
   </p>
 </div>
